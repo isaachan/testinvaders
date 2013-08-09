@@ -1,4 +1,4 @@
-source :rubygems
+source "http://ruby.taobao.org"
 
 gem 'rack'
 gem 'rack-rewrite'
