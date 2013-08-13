@@ -9,7 +9,7 @@ function Invader(initial_x, initial_y, bullet) {
   this.image = "invader";
 
   this.collide = function(other_thing) {
-    // TODO: Implement this later!
+    if (other_thing.team == Team.Earth) { this.active = false; }
   };
 
   var number_of_seconds_between_shots = 20;
