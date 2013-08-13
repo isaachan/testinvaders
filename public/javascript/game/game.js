@@ -31,5 +31,9 @@ function Game(painter, things) {
     });
   };
 
+  var swarm = things.filter(function(thing) { thing.name = "Swarm"; });
+  if (swarm && !swarm[0].active) _this.stop();
+ }
+
   return _this;
 }

@@ -2,6 +2,7 @@ function Swarm(invaders, zone_width) {
   var invader_width = invaders[0].box.width;
   var left = -1, right = 1;
 
+  this.name = "Swarm";
   this.direction = right;
   this.box = new BoundingBox(0, 0, 0, 0);
   this.active = true;
@@ -34,6 +35,7 @@ function Swarm(invaders, zone_width) {
       }
 
       this.direction = this.direction == right ? left : right;
+      this.active = (invaders.filter(function(invader) { return invader.active; }).length > 0);
     }
   };
 
