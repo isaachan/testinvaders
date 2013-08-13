@@ -32,5 +32,18 @@ function Game(painter, things, swarm) {
     });
   };
 
+  _this.stopTimer = function() {
+      clearTimeout(timer);    
+  };
+
+  _this.seconds = 0;
+  var timer;
+  startTimer = function() {
+    _this.seconds += 1;
+    painter.drawTimer(_this.seconds);
+    timer = setTimeout("startTimer()", 1000);
+  };
+
+  startTimer();
   return _this;
 }

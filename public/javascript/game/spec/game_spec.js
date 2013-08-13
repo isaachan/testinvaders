@@ -19,7 +19,8 @@ describe("Given a Game", function() {
   beforeEach(function() {
     painter = {
       clear: jasmine.createSpy('painter.clear'),
-      draw: jasmine.createSpy('painter.draw')
+      draw: jasmine.createSpy('painter.draw'),
+      drawTimer: jasmine.createSpy('painter.drawTimer')
     };
 
     thing = {
