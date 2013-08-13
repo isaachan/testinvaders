@@ -18,7 +18,27 @@ function Game(painter, things, swarm) {
     });
 
     this.check_for_collisions();
-    if (!swarm.active) _this.stop();
+    if (!swarm.active) _this.win();
+  };
+ 
+  _this.win = function() {
+    _this.stop();
+    alert("You win!");
+    alert(_this.highScores(5));
+  };
+
+  _this.highScores = function(top) {
+    var key = "HIGH_SCORES";
+    var highScores = localStorage.getItem(key);
+    if (!highScores) { highScores = ""; } 
+    highScores = highScores.split(","); 
+    
+    var sortedHighScores = highScores
+                            .concat(seconds)
+                            .sort(function(a,b) {return a - b;})
+                            .slice(0, top);
+    localStorage.setItem(key, sortedHighScores);      
+    return sortedHighScores;
   };
 
   _this.check_for_collisions = function() {
