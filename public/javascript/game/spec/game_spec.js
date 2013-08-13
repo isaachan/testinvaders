@@ -36,7 +36,7 @@ describe("Given a Game", function() {
       active: true
     };
 
-    game = new Game(painter, [thing, other_thing]);
+      game = new Game(painter, [thing, other_thing], {active: true});
   });
 
   describe("when checking for collisions", function() {
