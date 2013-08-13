@@ -3,6 +3,8 @@ function Game(painter, things, swarm) {
 
   _this.draw = function() {
     painter.clear();
+    painter.drawTimer(seconds);
+
     things.forEach(function(thing) {
       if(thing.active) {
         painter.draw(thing);
@@ -36,11 +38,10 @@ function Game(painter, things, swarm) {
       clearTimeout(timer);    
   };
 
-  _this.seconds = 0;
+  var seconds = 0;
   var timer;
   startTimer = function() {
-    _this.seconds += 1;
-    painter.drawTimer(_this.seconds);
+    seconds += 1;
     timer = setTimeout("startTimer()", 1000);
   };
 
