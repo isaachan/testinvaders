@@ -36,7 +36,7 @@ function Init() {
   var swarm = new Swarm(invaders, atom.canvas.width);
   things.push(swarm);
 
-  var game = new Game(painter, things);
+    var game = new Game(painter, things, swarm);
 
   window._game = game;
 

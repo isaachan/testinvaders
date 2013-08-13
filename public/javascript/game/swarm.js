@@ -35,8 +35,8 @@ function Swarm(invaders, zone_width) {
       }
 
       this.direction = this.direction == right ? left : right;
-      this.active = (invaders.filter(function(invader) { return invader.active; }).length > 0);
     }
+    this.active = (invaders.filter(function(invader) { return invader.active; }).length > 0);
   };
 
   this.collide = function() { };

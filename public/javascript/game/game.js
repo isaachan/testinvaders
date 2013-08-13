@@ -1,4 +1,4 @@
-function Game(painter, things) {
+function Game(painter, things, swarm) {
   var _this = new atom.Game();
 
   _this.draw = function() {
@@ -16,6 +16,7 @@ function Game(painter, things) {
     });
 
     this.check_for_collisions();
+    if (!swarm.active) _this.stop();
   };
 
   _this.check_for_collisions = function() {
@@ -30,10 +31,6 @@ function Game(painter, things) {
       });
     });
   };
-
-  var swarm = things.filter(function(thing) { thing.name = "Swarm"; });
-  if (swarm && !swarm[0].active) _this.stop();
- }
 
   return _this;
 }
