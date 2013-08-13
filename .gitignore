@@ -4,3 +4,6 @@
 *.DS_Store
 bin
 node_modules
+\.idea
+*.iml
+*.db
