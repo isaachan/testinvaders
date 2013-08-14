@@ -29,7 +29,7 @@ function Init() {
       var invader_bullet = new InvaderBullet();
       var invader = new Invader(x, y, invader_bullet);
 	  if (row == 0) {
-		  invader.image = "invader2";
+		  invader.heteromorphosis();
 	  }
       
       invaders.push(invader);

@@ -7,13 +7,37 @@ function Invader(initial_x, initial_y, bullet) {
   this.box = new BoundingBox(initial_x, initial_y, width, height);
   this.active = true;
   this.image = "invader";
+  this.hitpoint = 1;
 
   this.collide = function(other_thing) {
     if (other_thing.team == Team.Earth) {
-      this.active = false;
-      window._game.getScore(5);
+      this.hitpoint --;
+	  
+	  if (this.hitpoint <= 0) {
+	    this.active = false;
+		if (this.image == 'invader') {
+  	  	  window._game.getScore(5);
+	    } else {
+  	      window._game.getScore(20);
+	    }
+	  } else {
+		  this.updateImage();
+	  }
     }
   };
+  
+  this.updateImage = function () {
+	  if (this.image == "invader") {
+		  return;
+	  }
+	  
+	  this.image = "invader2_" + this.hitpoint;
+  };
+  
+  this.heteromorphosis = function () {
+	  this.image = "invader2_3";
+	  this.hitpoint = 3;
+  }
 
   var number_of_seconds_between_shots = 20;
   var shoot_countdown = Math.random() * number_of_seconds_between_shots;
