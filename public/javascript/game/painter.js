@@ -25,10 +25,10 @@ function Painter(context) {
     context.fillRect(0, 0, context.canvas.width, context.canvas.height);
   };
 
-  this.drawMessageBar = function(seconds, score, totalscore) {
+  this.drawMessageBar = function(seconds, score, totalscore, highestscore) {
     context.fillStyle="white";
-    context.font = "30px Verdana";
-    context.fillText("Time: " + seconds + ", Score: " + score + ", TotalScore: " + totalscore, 5, context.canvas.height - 5);
+    context.font = "24px Verdana";
+    context.fillText("Time: " + seconds + ", Score: " + score + ", TotalScore: " + totalscore + ", HighestScore: " + highestscore, 5, context.canvas.height - 5);
   };
 
   return this;

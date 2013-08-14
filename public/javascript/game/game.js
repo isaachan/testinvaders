@@ -3,6 +3,7 @@ function Game(painter) {
 
   var score = 0;
   var totalscore = 0;
+  var highestscore = 0;
   var things = [];
   var swarm;
   
@@ -37,12 +38,12 @@ function Game(painter) {
 	  }
 
 	  swarm = new Swarm(invaders, atom.canvas.width);
-	  things.push(swarm);  	
+	  things.push(swarm);
   }
   
   _this.draw = function() {
     painter.clear();
-    painter.drawMessageBar(seconds, score, totalscore);
+    painter.drawMessageBar(seconds, score, totalscore, highestscore);
 
     things.forEach(function(thing) {
       if(thing.active) {
@@ -68,26 +69,44 @@ function Game(painter) {
 		_this.run();
 	}
   };
+  
+  _this.lost = function() {
+    _this.stop();
+  	var answer = confirm ("Game Over!\n" + _this.highScores(5) + "\nClick OK to replay.")
+  	if (answer) {
+  		_this.initLevel();
+		totalscore = 0;
+  		_this.run();
+  	}
+  }
 
   _this.getScore = function(number) {
       score = score + number;  
-	  totalscore += number;  
+	  totalscore += number;
+	  if (totalscore > highestscore) {
+		  highestscore = totalscore;
+	  }
   };
 
-  // High scores are acturlly fastest gaming time so far.
   _this.highScores = function(top) {
     var key = "HIGH_SCORES";
     var highScores = localStorage.getItem(key);
-    if (!highScores) { highScores = ""; } 
+    if (!highScores) { highScores = "0"; } 
     highScores = highScores.split(","); 
     
     var sortedHighScores = highScores
-                            .concat(seconds)
-                            .sort(function(a,b) {return a - b;})
+                            .concat(totalscore)
+                            .sort(function(a,b) {return b - a;})
                             .slice(0, top);
     localStorage.setItem(key, sortedHighScores);      
     return sortedHighScores;
   };
+  
+  _this.highestScore = function() {
+	  var highest = _this.highScores(1);
+	  console.log(highest);
+	  return highest[0];
+  }
 
   _this.check_for_collisions = function() {
     things.forEach(function(thing) {
@@ -113,6 +132,7 @@ function Game(painter) {
     timer = setTimeout("startTimer()", 1000);
   };
 
+  highestscore = _this.highestScore();
   startTimer();
   return _this;
 }

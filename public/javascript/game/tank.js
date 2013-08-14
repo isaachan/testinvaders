@@ -34,8 +34,7 @@ function Tank(bullet) {
             return;
         }
 
-        window._game.stop();
-        alert("You Died");
+        window._game.lost();
     };
 
     this.output = true;
