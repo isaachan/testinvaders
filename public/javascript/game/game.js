@@ -17,8 +17,8 @@ function Game(painter) {
 	  var invaders = [];
 	  var column_offset = 70;
 	  var row_offset = 60;
-	  for(var row = 0; row < 1; row++) {
-	    for(var col = 0; col < 1; col++) {
+	  for(var row = 0; row < 5; row++) {
+	    for(var col = 0; col < 10; col++) {
 	      var x = col * column_offset;
 	      var y = row * row_offset;
       
