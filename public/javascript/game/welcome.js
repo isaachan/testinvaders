@@ -6,7 +6,9 @@
  */
 
 function Init() {
-  atom.input.bind(atom.button.LEFT, "shoot");
+  atom.input.bind(atom.key.LEFT_ARROW, "shift_left");
+  atom.input.bind(atom.key.RIGHT_ARROW, "shift_right");
+  atom.input.bind(atom.key.SPACE, "shoot");
 
   var painter = new Painter(atom.context);
   var things = [];

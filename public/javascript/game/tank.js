@@ -1,3 +1,24 @@
+function TankDriver(tankBox) {
+    var shiftDistance = 20;
+    var me = this;
+    me.tankBox = tankBox;
+
+    me.shiftLeft = function() {
+        console.log(me.tankBox);
+        me.tankBox.x -= shiftDistance;
+    };
+
+    me.shiftRight = function() {
+        me.tankBox.x += shiftDistance;
+    };
+
+    me.shoot = function(bullet) {
+        if (!bullet.active) {
+            bullet.shoot(-200, tankBox.x + tankBox.width / 2, tankBox.y);
+        }
+    };
+}
+
 function Tank(bullet) {
     var width = 66;
     var height = 42;
@@ -14,11 +35,16 @@ function Tank(bullet) {
         // the tank is invincible... that might be fun.
     };
 
+    this.output = true;
+
+    var driver = new TankDriver(this.box);
     this.update = function (delta_time, input) {
-        if (input.pressed("shoot")) {
-            if (!bullet.active) {
-                bullet.shoot(-200, input.mouse.x, this.box.y);
-            }
+        if (input.pressed("shift_left")) {
+            driver.shiftLeft();
+        } else if (input.pressed("shift_right")) {
+            driver.shiftRight();
+        } else if (input.pressed("shoot")) {
+            driver.shoot(bullet);
         }
     };
 
