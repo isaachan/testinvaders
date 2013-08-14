@@ -28,6 +28,9 @@ function Init() {
       
       var invader_bullet = new InvaderBullet();
       var invader = new Invader(x, y, invader_bullet);
+	  if (row == 0) {
+		  invader.image = "invader2";
+	  }
       
       invaders.push(invader);
       things.push(invader_bullet);

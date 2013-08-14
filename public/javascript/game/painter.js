@@ -7,6 +7,7 @@ function Painter(context) {
   this.images = {
     tank: find_image("img_tank"),
     invader: find_image("img_invader"),
+    invader2: find_image("img_invader2"),
     tank_bullet: find_image("img_tank_bullet"),
     invader_bullet: find_image("img_invader_bullet")
   };
