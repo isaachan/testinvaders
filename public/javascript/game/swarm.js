@@ -33,7 +33,6 @@ function Swarm(invaders, zone_width) {
   
   this.update = function() {
 	var max_y = max(collect_invader_y_positions());
-	console.log("max_y " + max_y);
 	if (max_y + 50 > 500) {
         window._game.stop();
         alert("The Swarm Invaded Your Base. You Died");
