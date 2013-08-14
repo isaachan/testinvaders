@@ -4,7 +4,6 @@ function TankDriver(tankBox) {
     me.tankBox = tankBox;
 
     me.shiftLeft = function() {
-        console.log(me.tankBox);
         me.tankBox.x -= shiftDistance;
     };
 
@@ -30,9 +29,13 @@ function Tank(bullet) {
     this.active = true;
     this.image = "tank";
 
-    this.collide = function () {
-        // TODO: Implement tank collisions or else
-        // the tank is invincible... that might be fun.
+    this.collide = function (unknownObject) {
+        if (unknownObject == bullet) {
+            return;
+        }
+
+        window._game.stop();
+        alert("You Died");
     };
 
     this.output = true;
