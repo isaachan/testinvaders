@@ -22,10 +22,10 @@ function Painter(context) {
     context.fillRect(0, 0, context.canvas.width, context.canvas.height);
   };
 
-  this.drawTimer = function(seconds) {
+  this.drawMessageBar = function(seconds, score) {
     context.fillStyle="white";
     context.font = "30px Verdana";
-    context.fillText(seconds, 5, context.canvas.height - 5);
+    context.fillText("Time: " + seconds + ", Score: " + score, 5, context.canvas.height - 5);
   };
 
   return this;
