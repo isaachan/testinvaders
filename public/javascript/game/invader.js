@@ -37,10 +37,10 @@ function Invader(initial_x, initial_y, bullet) {
   this.heteromorphosis = function () {
 	  this.image = "invader2_3";
 	  this.hitpoint = 3;
-	  this.number_of_seconds_between_shots = 50;
+	  this.number_of_seconds_between_shots = 20;
   }
 
-  var number_of_seconds_between_shots = 200;
+  var number_of_seconds_between_shots = 100;
   var shoot_countdown = Math.random() * number_of_seconds_between_shots;
   var its_time_to_shoot = function() {
     return shoot_countdown <= 0;
