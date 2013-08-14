@@ -23,10 +23,26 @@ function Swarm(invaders, zone_width) {
     });
   };
 
+  var collect_invader_y_positions = function() {
+    return invaders.filter(function(invader) {
+      return invader.active;
+    }).map(function(invader) {
+      return invader.box.y;
+    });
+  };
+  
   this.update = function() {
+	var max_y = max(collect_invader_y_positions());
+	console.log("max_y " + max_y);
+	if (max_y + 50 > 500) {
+        window._game.stop();
+        alert("The Swarm Invaded Your Base. You Died");
+		return;
+	}
+	  
     var min_x = min(collect_invader_x_positions());
     var max_x = max(collect_invader_x_positions()) + invader_width;
-
+	
     if(((this.direction == right) && (max_x >= zone_width)) ||
        ((this.direction == left) && (min_x <= 0))) {
 
