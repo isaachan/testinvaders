@@ -2,12 +2,14 @@ function Game(painter) {
   var _this = new atom.Game();
 
   var score = 0;
+  var totalscore = 0;
   var things = [];
   var swarm;
   
   _this.initLevel = function() {
 	  things = [];
 	  seconds = 0;
+	  score = 0;
 	  
 	  var bullet = new Bullet();
 	  var tank = new Tank(bullet);
@@ -40,7 +42,7 @@ function Game(painter) {
   
   _this.draw = function() {
     painter.clear();
-    painter.drawMessageBar(seconds, score);
+    painter.drawMessageBar(seconds, score, totalscore);
 
     things.forEach(function(thing) {
       if(thing.active) {
@@ -68,7 +70,8 @@ function Game(painter) {
   };
 
   _this.getScore = function(number) {
-      score = score + number;    
+      score = score + number;  
+	  totalscore += number;  
   };
 
   // High scores are acturlly fastest gaming time so far.
