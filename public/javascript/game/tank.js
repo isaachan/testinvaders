@@ -34,7 +34,7 @@ function Tank(bullet) {
             return;
         }
 
-        window._game.lost();
+        this.die();
     };
 
     this.output = true;
@@ -48,6 +48,11 @@ function Tank(bullet) {
         } else if (input.pressed("shoot")) {
             driver.shoot(bullet);
         }
+    };
+
+    this.die = function() {
+        // You died, and game over
+//        window._game.lost();
     };
 
     return this;
