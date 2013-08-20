@@ -26,10 +26,14 @@ function Painter(context) {
   };
 
   this.drawMessageBar = function(seconds, score, totalscore, highestscore) {
-    context.fillStyle="white";
-    context.font = "24px Verdana";
-    context.fillText("Time: " + seconds + ", Score: " + score + ", TotalScore: " + totalscore + ", HighestScore: " + highestscore, 5, context.canvas.height - 5);
+    this.fillText("Time: " + seconds + ", Score: " + score + ", TotalScore: " + totalscore + ", HighestScore: " + highestscore, 5, context.canvas.height - 5);
   };
+
+  this.fillText = function(text, x, y) {
+      context.fillStyle="white";
+      context.font = "24px Verdana";
+      context.fillText(text, x, y);
+  }
 
   return this;
 }
