@@ -78,7 +78,7 @@ function Game(painter) {
 				var y = row * row_offset;
 
 				var invader_bullet = new InvaderBullet();
-				var invader = new Invader(x, y, invader_bullet);
+				var invader = new Invader(x, y, invader_bullet, type);
 
 				invaders.push(invader);
 				things.push(invader_bullet);

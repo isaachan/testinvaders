@@ -1,4 +1,4 @@
-function Invader(initial_x, initial_y, bullet) {
+function Invader(initial_x, initial_y, bullet, type) {
     var width = 66;
     var height = 48;
 
@@ -8,6 +8,7 @@ function Invader(initial_x, initial_y, bullet) {
     this.active = true;
     this.image = "invader";
     this.hitpoint = 1;
+    this.number_of_seconds_between_shots = 100;
 
     this.collideFromEarth = function() {
         this.hitpoint--;
@@ -20,14 +21,23 @@ function Invader(initial_x, initial_y, bullet) {
         }
     };
 
-    /**
-     *  For diffrent type of invader.
-     *
-     *
-     this.image = "invader2_3";
-     this.hitpoint = 3;
-     this.number_of_seconds_between_shots = 20;
-     */
+    this.isAlien = function() {return type == 2;};
+
+    this.enhanceAlien = function() {
+        /*
+        For enhance alien, there are 3 configuration available:
+         this.hitpoint
+            Life of the alien. The value is one of 1,2,3. (Alien would not be shown if over 3)
+         this.number_of_seconds_between_shots
+            Interval (in second) of every shoot. Default value is 100.
+         */
+
+        this.image = "invader2_" + this.hitpoint;
+    };
+
+    if (this.isAlien()) {
+        this.enhanceAlien();
+    }
 
     this.collide = function (other_thing) {
 
@@ -41,8 +51,7 @@ function Invader(initial_x, initial_y, bullet) {
         this.image = "invader2_" + this.hitpoint;
     };
 
-    var number_of_seconds_between_shots = 100;
-    var shoot_countdown = Math.random() * number_of_seconds_between_shots;
+    var shoot_countdown = Math.random() * this.number_of_seconds_between_shots;
     var its_time_to_shoot = function () {
         return shoot_countdown <= 0;
     };
@@ -54,7 +63,7 @@ function Invader(initial_x, initial_y, bullet) {
             // Shooting
             if (its_time_to_shoot()) {
                 bullet.shoot(50, this.box.x + (width / 2), this.box.y + (height / 2));
-                shoot_countdown = number_of_seconds_between_shots;
+                shoot_countdown = this.number_of_seconds_between_shots;
             }
 
             // Movement
