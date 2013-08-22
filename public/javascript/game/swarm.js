@@ -50,7 +50,11 @@ function Swarm(invaders, zone_width) {
 
             this.direction = this.direction == right ? left : right;
         }
-        this.active = (invaders.filter(function (invader) {
+
+    };
+
+    this._updateActive = function() {
+        return (invaders.filter(function (invader) {
             return invader.active;
         }).length > 0);
     };

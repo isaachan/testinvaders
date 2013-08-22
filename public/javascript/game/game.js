@@ -102,7 +102,6 @@ function Game(painter) {
 		});
 
 		this.check_for_collisions();
-		if (!swarm.active) _this.win();
 	};
 
 	_this.win = function() {
