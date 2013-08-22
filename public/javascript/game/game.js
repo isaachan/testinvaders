@@ -102,16 +102,7 @@ function Game(painter) {
 
 	_this.win = function() {
 		_this.stop();
-		var answer = confirm("You Win!\n Click OK to next level.")
-		if (answer) {
-			currentlevel++;
-			if (currentlevel > level.count) {
-				currentlevel = 0;
-			}
-
-			_this.initLevel();
-			_this.run();
-		}
+		confirm("You Win!")
 	};
 
 	_this.lost = function() {
