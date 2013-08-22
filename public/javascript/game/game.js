@@ -115,7 +115,7 @@ function Game(painter) {
 	};
 
 	_this.win = function() {
-		_this.stop();
+		 _this.stop();
 		confirm("You Win!")
 	};
 
