@@ -173,10 +173,6 @@ function Game(painter) {
 		});
 	};
 
-	_this.stopTimer = function() {
-		clearTimeout(timer);
-	};
-
 	var seconds = 0;
 	var timer;
 	startTimer = function() {
@@ -185,6 +181,6 @@ function Game(painter) {
 	};
 
 	highestscore = _this.highestScore();
-	startTimer();
+
 	return _this;
 }
