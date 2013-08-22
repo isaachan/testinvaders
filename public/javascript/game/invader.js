@@ -9,6 +9,16 @@ function Invader(initial_x, initial_y, bullet) {
     this.image = "invader";
     this.hitpoint = 1;
 
+    this.colideFromEarth = function() {
+        this.hitpoint--;
+
+        if (this.hitpoint <= 0) {
+            this.active = false;
+        } else {
+            this.updateImage();
+        }
+    }
+
     /**
      *  For diffrent type of invader.
      *
@@ -19,15 +29,7 @@ function Invader(initial_x, initial_y, bullet) {
      */
 
     this.collide = function (other_thing) {
-        if (other_thing.team == Team.Earth) {
-            this.hitpoint--;
 
-            if (this.hitpoint <= 0) {
-                this.active = false;
-            } else {
-                this.updateImage();
-            }
-        }
     };
 
     this.updateImage = function () {
