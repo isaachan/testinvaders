@@ -182,6 +182,6 @@ function Game(painter) {
 	};
 
 	highestscore = _this.highestScore();
-
+    startTimer();
 	return _this;
 }
