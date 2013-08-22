@@ -9,7 +9,7 @@ function Invader(initial_x, initial_y, bullet) {
     this.image = "invader";
     this.hitpoint = 1;
 
-    this.colideFromEarth = function() {
+    this.collideFromEarth = function() {
         this.hitpoint--;
 
         if (this.hitpoint <= 0) {
@@ -17,7 +17,7 @@ function Invader(initial_x, initial_y, bullet) {
         } else {
             this.updateImage();
         }
-    }
+    };
 
     /**
      *  For diffrent type of invader.

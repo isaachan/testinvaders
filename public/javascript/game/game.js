@@ -105,6 +105,10 @@ function Game(painter) {
 		});
 
 		this.check_for_collisions();
+
+        if(swarm.isKilled()) {
+            _this.win();
+        }
 	};
 
 	_this.win = function() {

@@ -50,7 +50,7 @@ function Swarm(invaders, zone_width) {
 
             this.direction = this.direction == right ? left : right;
         }
-
+        this.active = this._updateActive();
     };
 
     this._updateActive = function() {
@@ -65,6 +65,10 @@ function Swarm(invaders, zone_width) {
     this.invadeSuccessfully = function() {
 //        window._game.lost();
     };
+
+    this.isKilled = function() {
+        return false;
+    }
 
     return this;
 }
