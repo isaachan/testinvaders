@@ -14,6 +14,7 @@ function Invader(initial_x, initial_y, bullet) {
 
         if (this.hitpoint <= 0) {
             this.active = false;
+            this.die();
         } else {
             this.updateImage();
         }
@@ -64,6 +65,10 @@ function Invader(initial_x, initial_y, bullet) {
     this.invade = function () {
         this.box.y += 10;
         this.velocity = this.velocity * -1;
+    };
+
+    this.die = function() {
+        window._game.addScore(5);
     };
 
     return this;
