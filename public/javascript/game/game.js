@@ -2,9 +2,9 @@ function Game(painter) {
 	var _this = new atom.Game();
 
     var score = 0;
-	var totalscore = 0;
-	var highestscore = 0;
-	var currentlevel = 0;
+	var totalScore = 0;
+	var highestScore = 0;
+	var currentLevel = 0;
 	var things = [];
 	var swarm;
 
@@ -57,7 +57,7 @@ function Game(painter) {
 		things = [];
 		seconds = 0;
 
-		var lm = level[currentlevel];
+		var lm = level[currentLevel];
 
 		var bullet = new Bullet();
 		var tank = new Tank(bullet);
@@ -127,18 +127,18 @@ function Game(painter) {
         _this.stop();
         var answer = confirm(_this.gameOverMessage());
         if (answer) {
-            currentlevel = 0;
+            currentLevel = 0;
             _this.initLevel();
-            totalscore = 0;
+            totalScore = score = 0;
             _this.run();
         }
     };
 
 	_this.addScore = function(number) {
         score += number;
-		totalscore += number;
-		if (totalscore > highestscore) {
-			highestscore = totalscore;
+		totalScore += number;
+		if (totalScore > highestScore) {
+			highestScore = totalScore;
 		}
 	};
 
@@ -150,7 +150,7 @@ function Game(painter) {
 		}
 		highScores = highScores.split(",");
 
-		var sortedHighScores = highScores.concat(totalscore)
+		var sortedHighScores = highScores.concat(totalScore)
 			.sort(function(a, b) {
 			return b - a;
 		})
@@ -185,7 +185,7 @@ function Game(painter) {
 		timer = setTimeout("startTimer()", 1000);
 	};
 
-	highestscore = _this.highestScore();
+	highestScore = _this.highestScore();
     startTimer();
 	return _this;
 }
