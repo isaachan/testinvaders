@@ -9,6 +9,15 @@ function Invader(initial_x, initial_y, bullet) {
     this.image = "invader";
     this.hitpoint = 1;
 
+    /**
+     *  For diffrent type of invader.
+     *
+     *
+     this.image = "invader2_3";
+     this.hitpoint = 3;
+     this.number_of_seconds_between_shots = 20;
+     */
+
     this.collide = function (other_thing) {
         if (other_thing.team == Team.Earth) {
             this.hitpoint--;
@@ -27,12 +36,6 @@ function Invader(initial_x, initial_y, bullet) {
         }
 
         this.image = "invader2_" + this.hitpoint;
-    };
-
-    this.heteromorphosis = function () {
-        this.image = "invader2_3";
-        this.hitpoint = 3;
-        this.number_of_seconds_between_shots = 20;
     };
 
     var number_of_seconds_between_shots = 100;

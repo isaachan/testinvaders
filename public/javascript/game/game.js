@@ -72,10 +72,6 @@ function Game(painter) {
 				var invader_bullet = new InvaderBullet();
 				var invader = new Invader(x, y, invader_bullet);
 
-				if (type == 2) {
-					invader.heteromorphosis();
-				}
-
 				invaders.push(invader);
 				things.push(invader_bullet);
 				things.push(invader);
