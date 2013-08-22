@@ -119,16 +119,20 @@ function Game(painter) {
 		confirm("You Win!")
 	};
 
-	_this.lost = function() {
-		_this.stop();
-		var answer = confirm("Game Over!\nClick OK to replay.")
-		if (answer) {
-			currentlevel = 0;
-			_this.initLevel();
-			totalscore = 0;
-			_this.run();
-		}
-	}
+    _this.gameOverMessage = function() {
+        return "Game Over!\nClick OK to replay.";
+    };
+
+    _this.lost = function() {
+        _this.stop();
+        var answer = confirm(_this.gameOverMessage());
+        if (answer) {
+            currentlevel = 0;
+            _this.initLevel();
+            totalscore = 0;
+            _this.run();
+        }
+    };
 
 	_this.addScore = function(number) {
         score += number;
@@ -138,7 +142,7 @@ function Game(painter) {
 		}
 	};
 
-	_this.highScores = function(top) {
+	_this.topScores = function(top) {
 		var key = "HIGH_SCORES";
 		var highScores = localStorage.getItem(key);
 		if (!highScores) {
@@ -156,7 +160,7 @@ function Game(painter) {
 	};
 
 	_this.highestScore = function() {
-		var highest = _this.highScores(1);
+		var highest = _this.topScores(1);
 		console.log(highest);
 		return highest[0];
 	}
