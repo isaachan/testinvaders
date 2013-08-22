@@ -1,7 +1,6 @@
 function Game(painter) {
 	var _this = new atom.Game();
 
-	var score = 0;
 	var totalscore = 0;
 	var highestscore = 0;
 	var currentlevel = 0;
@@ -43,13 +42,12 @@ function Game(painter) {
 			[1, 1, 1, 2, 2, 2, 2, 1, 1, 1],
 			[1, 1, 1, 1, 2, 2, 1, 1, 1, 1],
 			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-		],
+		]
 	];
 
 	_this.initLevel = function() {
 		things = [];
 		seconds = 0;
-		score = 0;
 
 		var lm = level[currentlevel];
 
@@ -90,7 +88,6 @@ function Game(painter) {
 
 	_this.draw = function() {
 		painter.clear();
-		painter.drawMessageBar(seconds, score, totalscore, highestscore);
 
 		things.forEach(function(thing) {
 			if (thing.active) {
@@ -133,8 +130,7 @@ function Game(painter) {
 		}
 	}
 
-	_this.getScore = function(number) {
-		score = score + number;
+	_this.addScore = function(number) {
 		totalscore += number;
 		if (totalscore > highestscore) {
 			highestscore = totalscore;

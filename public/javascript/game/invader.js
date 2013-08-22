@@ -15,11 +15,6 @@ function Invader(initial_x, initial_y, bullet) {
 
             if (this.hitpoint <= 0) {
                 this.active = false;
-                if (this.image == 'invader') {
-                    window._game.getScore(5);
-                } else {
-                    window._game.getScore(20);
-                }
             } else {
                 this.updateImage();
             }

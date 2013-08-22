@@ -25,8 +25,8 @@ function Painter(context) {
     context.fillRect(0, 0, context.canvas.width, context.canvas.height);
   };
 
-  this.drawMessageBar = function(seconds, score, totalscore, highestscore) {
-    this.fillText("Time: " + seconds + ", Score: " + score + ", TotalScore: " + totalscore + ", HighestScore: " + highestscore, 5, context.canvas.height - 5);
+  this.drawMessageBar = function(msg) {
+    this.fillText(msg, 5, context.canvas.height - 5);
   };
 
   this.fillText = function(text, x, y) {
